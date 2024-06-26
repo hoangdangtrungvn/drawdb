@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { IconCrossStroked } from "@douyinfe/semi-icons";
 import SimpleCanvas from "../components/SimpleCanvas";
 import Navbar from "../components/Navbar";
 import { diagram } from "../data/heroDiagram";
@@ -10,14 +9,10 @@ import postgres_icon from "../assets/postgres.png";
 import sqlite_icon from "../assets/sqlite.png";
 import mariadb_icon from "../assets/mariadb.png";
 import sql_server_icon from "../assets/sql-server.png";
-import discord from "../assets/discord.png";
-import github from "../assets/github.png";
 import FadeIn from "../animations/FadeIn";
 import SlideIn from "../animations/SlideIn";
 
 export default function LandingPage() {
-  const [showSurvey, setShowSurvey] = useState(true);
-
   useEffect(() => {
     document.body.setAttribute("theme-mode", "light");
     document.title =
@@ -27,18 +22,6 @@ export default function LandingPage() {
   return (
     <div>
       <div className="flex flex-col h-screen">
-        {showSurvey && (
-          <div className="text-white font-semibold py-1.5 px-4 text-sm text-center bg-gradient-to-r from-slate-700 from-10% via-slate-500 to-slate-700">
-            <Link to="/survey" className="hover:underline">
-              Help us improve! Share your feedback.
-            </Link>
-            <div className="float-right">
-              <button onClick={() => setShowSurvey(false)}>
-                <IconCrossStroked size="small" />
-              </button>
-            </div>
-          </div>
-        )}
         <Navbar />
         <div className="flex-1 flex-col relative">
           <div className="h-full md:hidden">
@@ -199,68 +182,6 @@ export default function LandingPage() {
             src={sql_server_icon}
             className="opacity-70 hover:opacity-100 transition-all duration-300 h-24"
           />
-        </div>
-        <div className="mt-16 mb-2 text-2xl font-bold text-center">
-          Reach out to us
-        </div>
-        <div className="text-lg text-center mb-4">
-          Your feedback is important to us. Share your thoughts and help us
-          improve.
-        </div>
-        <div className="px-36 text-center md:px-8">
-          <div className="w-full flex gap-8 sm:block">
-            <Link
-              to="/survey"
-              className="w-full flex items-center gap-2 font-semibold justify-center bg-white shadow-lg px-9 py-2 rounded border border-zinc-200 hover:bg-zinc-100 transition-all duration-300"
-            >
-              <div>Take a survey</div>
-              <i className="bi bi-arrow-right"></i>
-            </Link>
-            <Link
-              to="/bug-report"
-              className="sm:mt-2 w-full flex items-center gap-2 font-semibold justify-center bg-white shadow-lg px-9 py-2 rounded border border-zinc-200 hover:bg-zinc-100 transition-all duration-300"
-            >
-              <div>Report a bug</div>
-              <i className="bi bi-arrow-right"></i>
-            </Link>
-          </div>
-          <div className="mt-10">
-            Connect with us at
-            <a
-              href="mailto:drawdb@outlook.com"
-              className="text-blue-500 font-semibold hover:underline ms-1.5"
-            >
-              drawdb@outlook.com
-            </a>
-          </div>
-          <div className="sm:block flex gap-3 justify-center">
-            <a
-              className="inline-block mt-2"
-              href="https://github.com/drawdb-io/drawdb"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="bg-zinc-800 hover:opacity-90 transition-all duration-300 flex items-center gap-4 px-14 py-4 rounded-lg">
-                <img src={github} className="h-8" />
-                <div className="text-lg text-white font-bold">
-                  See the source
-                </div>
-              </div>
-            </a>
-            <a
-              className="inline-block mt-2"
-              href="https://discord.gg/BrjZgNrmR6"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="bg-[#5865f2] hover:opacity-90 transition-all duration-300 flex items-center gap-4 px-8 py-4 rounded-lg">
-                <img src={discord} className="h-8" />
-                <div className="text-lg text-white font-bold">
-                  Join us on Discord
-                </div>
-              </div>
-            </a>
-          </div>
         </div>
       </div>
       <div className="bg-red-700 py-1 text-center text-white text-xs font-semibold px-3">
